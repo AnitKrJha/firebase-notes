@@ -14,7 +14,7 @@ function Note({ title, content, id, pinned, setNotes }) {
         );
         
     }
-    return <div className="max-w-md w-max bg-white shadow-lg rounded-lg overflow-hidden">
+    return <div className={`max-w-md w-max bg-white shadow-lg rounded-lg overflow-hidden ${pinned ? 'border-2 border-blue-500' : ''}`}>
     <h2 className="text-xl font-bold text-gray-800 p-4">{title}</h2>
     <hr className="my-2 border-gray-300" />
     <div className="text-gray-700 p-4">
@@ -35,6 +35,7 @@ function Note({ title, content, id, pinned, setNotes }) {
         </button>
     </div>
 </div>
+
 
 
 
