@@ -7,15 +7,15 @@ import NoteForm from './components/notesForm';
 
 function App() {
   const [notes, setNotes] = useState([]);
-  const [notesLoading,setNotesLoading]=useState(false);
+  const [notesLoading, setNotesLoading] = useState(false);
   useEffect(() => {
     async function getAllData() {
       setNotesLoading(true);
       const querySnapshot = await getDocs(collection(db, "notes"));
-      const notesData=[];
+      const notesData = [];
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        notesData.push({id:doc.id,...doc.data()});
+        notesData.push({ id: doc.id, ...doc.data() });
         console.log(doc.id, " => ", doc.data());
       });
       setNotes(notesData);
@@ -26,11 +26,13 @@ function App() {
 
   return (
     <>
+
+
       <NoteForm setNotes={setNotes} />
-      {notesLoading?"loading":
-      <Notes notes={notes} setNotes={setNotes} />}
+      <Notes loading={notesLoading} notes={notes} setNotes={setNotes} />
 
     </>
+
   )
 }
 

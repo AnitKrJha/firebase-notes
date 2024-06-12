@@ -14,17 +14,28 @@ function Note({ title, content, id, pinned, setNotes }) {
         );
         
     }
-    return <div className="max-w-md mx-auto p-4 bg-white shadow-lg rounded-lg">
-    <h2 className="text-xl font-bold">{title}</h2>
-    <hr className="my-4" />
-    <div className="text-gray-700">
+    return <div className="max-w-md w-max bg-white shadow-lg rounded-lg overflow-hidden">
+    <h2 className="text-xl font-bold text-gray-800 p-4">{title}</h2>
+    <hr className="my-2 border-gray-300" />
+    <div className="text-gray-700 p-4">
         {content}
     </div>
-    <div className="mt-4 flex justify-between">
-        <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" onClick={(e) => handleDelete(id)}>Delete</button>
-        <button className="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300" onClick={(e) => handlePin(id, pinned)}>{pinned ? "UNPIN" : "PIN"}</button>
+    <div className="flex justify-end p-4">
+        <button 
+            className="bg-red-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 mr-2"
+            onClick={(e) => handleDelete(id)}
+        >
+            Delete
+        </button>
+        <button 
+            className={`bg-gray-200 px-4 py-2 rounded-md shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${pinned ? 'bg-blue-500 text-white hover:bg-blue-600' : ''}`}
+            onClick={(e) => handlePin(id, pinned)}
+        >
+            {pinned ? "UNPIN" : "PIN"}
+        </button>
     </div>
 </div>
+
 
 
 }
